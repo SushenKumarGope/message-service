@@ -11,16 +11,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/v1/message")
 public class MessageController {
-    public static final Logger LOGGER = LoggerFactory.getLogger(MessageController.class);
+  public static final Logger LOGGER = LoggerFactory.getLogger(MessageController.class);
 
-    @GetMapping
-    @Operation(
-            summary = "Hello Message",
-            description = "Returns Hello message"
-    )
-    public ResponseEntity<String> getMessage(@RequestHeader(value = "X-trace-id", required = false) String traceId){
-        LOGGER.info("traceId: {}",traceId);
-        return ResponseEntity.ok().header("X-trace-Id", traceId).body("Hello");
-    }
-
+  @GetMapping
+  @Operation(summary = "Hello Message", description = "Returns Hello message")
+  public ResponseEntity<String> getMessage(
+      @RequestHeader(value = "X-trace-id", required = false) String traceId) {
+    LOGGER.info("traceId: {}", traceId);
+    return ResponseEntity.ok().header("X-trace-Id", traceId).body("Hello");
+  }
 }

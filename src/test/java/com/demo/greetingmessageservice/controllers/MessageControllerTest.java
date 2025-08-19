@@ -13,14 +13,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(MessageController.class)
 class MessageControllerTest {
-    @Autowired
-    private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
-    @Test
-    void testGetMessage() throws Exception {
-        mockMvc.perform(get("/v1/message")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Hello"));
-    }
+  @Test
+  void testGetMessage() throws Exception {
+    mockMvc
+        .perform(get("/v1/message").accept(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(content().string("Hello"));
+  }
 }
